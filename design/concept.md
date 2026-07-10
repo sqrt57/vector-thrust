@@ -13,15 +13,22 @@ target locations, similar in feel to *Thrust* (1986) / *Gravity Force* /
 ## Core mechanics
 
 - **Gravity**: constant downward force on the vehicle at all times.
-- **Orientation control**: player rotates the vehicle (touch drag, tilt, or
-  twin virtual sticks — TBD).
+- **Orientation control**: delegated to an in-fiction "navigator" — the
+  player taps a point on the playing field to set a target, and the
+  vehicle auto-rotates toward it at a rate-limited (not instant) turn
+  speed. The player does not directly command rotation; navigator turn
+  rate/quality is an upgradeable stat (see
+  [control-schemes.md](control-schemes.md)).
 - **Throttle control**: player applies thrust along the vehicle's current
-  facing direction; thrust magnitude is adjustable, not just on/off.
-- **Momentum-based flight**: no auto-leveling or assisted stabilization by
-  default — the challenge is mastering inertia against gravity, similar to
-  lunar-lander physics.
+  facing direction via a fixed thrust button (lower-right corner); tap for
+  a burst, hold for a sustained burn.
+- **Momentum-based flight**: the vehicle still has real inertia and a
+  rate-limited turn — the skill is timing thrust bursts against how far
+  the navigator has rotated (burn early for a curved shot, wait for full
+  alignment for a straight one), not manual stick-and-rudder control.
 - **Collision**: touching walls/terrain at speed is penalized or fatal;
-  precision maneuvering is the skill being tested.
+  precision maneuvering (via target placement + burn timing) is the skill
+  being tested.
 
 ## Modes (candidates)
 
@@ -35,16 +42,23 @@ target locations, similar in feel to *Thrust* (1986) / *Gravity Force* /
 ## Platform
 
 - Mobile-first. Touch input is the primary interaction model.
-- Needs a control scheme that maps rotation + throttle to touch cleanly
-  (e.g. tilt-based rotation, on-screen thrust button; or dual virtual
-  joysticks; or drag-to-aim + thrust slider). To be prototyped and compared.
+- Control scheme: tap-to-set-navigator-target on the playing field, plus a
+  fixed thrust button (lower-right corner). A shoot button will be added
+  in the same fixed-corner style once weapons are implemented. See
+  [control-schemes.md](control-schemes.md) for the full analysis.
+
+## Tech stack
+
+- **Engine: Godot** (GDScript, built-in 2D physics). Chosen for genuine 2D
+  physics support well-suited to gravity/thrust movement, text-based scene
+  files, and native mobile export (iOS/Android).
 
 ## Open questions
 
-- Engine/tech stack (native mobile, Unity, Godot, web/HTML5 + wrapper, etc.)
-- Control scheme (tilt vs. touch joystick vs. drag-to-aim)
 - Physics model fidelity (arcade-y vs. more simulation-accurate)
+- Navigator turn-rate/smartness upgrade curve — see
+  [control-schemes.md](control-schemes.md) open questions.
 - Vehicle types and how they differ (rocket vs. helicopter handling)
 - Cargo/tractor-beam mechanic details, if adopted
-- Weapon system scope, if adopted
+- Weapon system scope and shoot-button behavior, once adopted
 - Level format and editor/tooling for maze design
