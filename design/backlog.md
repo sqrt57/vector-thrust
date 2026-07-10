@@ -30,15 +30,19 @@ milestone are roughly execution order, not strict dependencies.
 
 ## M1 — Core flight physics prototype
 
-- [ ] Vehicle node with a rigid body (or custom integrator) affected by
+- [x] Vehicle node with a rigid body (or custom integrator) affected by
       constant gravity.
-- [ ] Thrust force applied along the vehicle's current facing direction,
+- [x] Thrust force applied along the vehicle's current facing direction,
       magnitude controlled by a temporary hardcoded/dev input (e.g.
       keyboard key) — just to validate gravity/thrust/mass feel before any
-      UI exists.
+      UI exists. Verified on a real Android device via a temporary
+      on-screen thrust button (pulled forward from M2) since the
+      keyboard-only dev input isn't usable on touch.
 - [ ] Tune gravity strength, thrust magnitude, and vehicle mass/drag to a
-      first "feels right" pass.
-- [ ] Simple fixed camera framing the full playfield (static environment
+      first "feels right" pass. (Only a functional fix so thrust can
+      overcome gravity at all — thrust_acceleration=1400 vs gravity=800 —
+      not yet a deliberate feel pass.)
+- [x] Simple fixed camera framing the full playfield (static environment
       — no scroll/follow behavior yet; see
       [environments.md](environments.md)).
 
