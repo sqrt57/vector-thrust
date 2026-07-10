@@ -23,10 +23,10 @@ milestone are roughly execution order, not strict dependencies.
       that produced a signed APK. iOS skipped (no Mac available for
       signing).
 - [x] Basic empty scene (`scenes/main.tscn`) that runs on desktop —
-      verified both headless and in a real window. **Not yet verified on
-      an actual Android emulator/device** (only the export/signing
-      pipeline was confirmed) — install the built APK on a device/
-      emulator before relying on mobile input behavior in M2.
+      verified both headless and in a real window. Also installed and
+      launched on a real Android device (`adb install` + launch);
+      confirmed running via `pidof` and logcat showing steady ~59fps
+      frame output with no crashes.
 
 ## M1 — Core flight physics prototype
 
