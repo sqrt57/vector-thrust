@@ -38,7 +38,9 @@ milestone are roughly execution order, not strict dependencies.
       UI exists.
 - [ ] Tune gravity strength, thrust magnitude, and vehicle mass/drag to a
       first "feels right" pass.
-- [ ] Simple camera that follows the vehicle.
+- [ ] Simple fixed camera framing the full playfield (static environment
+      — no scroll/follow behavior yet; see
+      [environments.md](environments.md)).
 
 ## M2 — Navigator & real input
 
@@ -70,7 +72,9 @@ milestone are roughly execution order, not strict dependencies.
 
 - [ ] Hand-built single maze level using placeholder geometry.
 - [ ] Checkpoint/exit trigger and win state.
-- [ ] Camera framing tuned for maze corridors (zoom/lookahead as needed).
+- [ ] Camera framing tuned for maze corridors (static environment — first
+      maze fits on one screen, per [environments.md](environments.md);
+      zoom to fit, no scroll/lookahead needed yet).
 - [ ] First real playtest of the full loop: tap target → burn → navigate
       corridor → reach exit, without any placeholder dev-input shortcuts
       left in from M1.
@@ -126,3 +130,6 @@ milestone are roughly execution order, not strict dependencies.
   be settled before M2 starts.
 - Physics fidelity (arcade vs. simulation-accurate) — decide during M1
   tuning, not before.
+- Scrolling environment support (camera follow, lookahead/deadzone
+  tuning, off-screen level state) — deferred until static environments
+  are validated through M1–M4; see [environments.md](environments.md).
