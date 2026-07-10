@@ -7,15 +7,26 @@ milestone are roughly execution order, not strict dependencies.
 
 ## M0 — Project scaffolding
 
-- [ ] Initialize Godot project (`project.godot`) inside the repo.
-- [ ] Folder structure: `scenes/`, `scripts/`, `assets/`, `levels/`.
-- [ ] `.gitignore` additions for Godot (`.godot/`, `export_presets.cfg` if
-      it contains machine-specific paths, `*.import`).
-- [ ] Mobile export presets set up for Android (and iOS if a Mac/signing
-      is available) — even if unused until later, confirms the toolchain
-      works end to end early.
-- [ ] Basic empty scene that runs on both desktop (for fast iteration) and
-      an Android emulator/device (to catch mobile-only issues early).
+- [x] Initialize Godot project (`project.godot`) inside the repo. Godot
+      4.7 (GDScript, GL Compatibility renderer for broad mobile support).
+- [x] Folder structure: `scenes/`, `scripts/`, `assets/`, `levels/`.
+- [x] `.gitignore` additions for Godot (`.godot/`, `/android/`,
+      `/builds/`). `export_presets.cfg` is committed as-is — its only
+      credential is the Android debug keystore password, which is the
+      universal, non-secret default (`android`/`androiddebugkey`) shared
+      by every Android SDK install; a release keystore, when added later,
+      must **not** be committed the same way.
+- [x] Mobile export presets set up for Android — JDK 17 (Temurin)
+      installed, Godot 4.7 export templates downloaded and installed,
+      Android SDK/debug keystore auto-detected via Android Studio.
+      Verified end-to-end with a real headless `--export-debug` build
+      that produced a signed APK. iOS skipped (no Mac available for
+      signing).
+- [x] Basic empty scene (`scenes/main.tscn`) that runs on desktop —
+      verified both headless and in a real window. **Not yet verified on
+      an actual Android emulator/device** (only the export/signing
+      pipeline was confirmed) — install the built APK on a device/
+      emulator before relying on mobile input behavior in M2.
 
 ## M1 — Core flight physics prototype
 

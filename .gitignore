@@ -5,6 +5,14 @@ Thumbs.db
 # Editors
 .vscode/
 .idea/
+.claude/
 
 # Logs
 *.log
+
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Export output
+/builds/

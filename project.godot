@@ -1,0 +1,24 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes to [section]
+;
+; Various types of values are: bool, int, float, string, arrays, dictionaries, etc.
+;
+; If replacing an existing project's file, keep the "config_version" field.
+
+config_version=5
+
+[application]
+
+config/name="Vector Thrust"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
