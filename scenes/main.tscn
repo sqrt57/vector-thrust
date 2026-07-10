@@ -1,3 +1,86 @@
-[gd_scene format=3]
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/vehicle.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/thrust_button.gd" id="2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h"]
+size = Vector2(648, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v"]
+size = Vector2(20, 1152)
 
 [node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(324, 576)
+current = true
+
+[node name="Vehicle" parent="." instance=ExtResource("1") groups=["vehicle"]]
+position = Vector2(324, 300)
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(324, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource("RectangleShape2D_h")
+
+[node name="ColorRect" type="ColorRect" parent="TopWall"]
+offset_left = -324.0
+offset_top = -10.0
+offset_right = 324.0
+offset_bottom = 10.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(324, 1142)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource("RectangleShape2D_h")
+
+[node name="ColorRect" type="ColorRect" parent="BottomWall"]
+offset_left = -324.0
+offset_top = -10.0
+offset_right = 324.0
+offset_bottom = 10.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(10, 576)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("RectangleShape2D_v")
+
+[node name="ColorRect" type="ColorRect" parent="LeftWall"]
+offset_left = -10.0
+offset_top = -576.0
+offset_right = 10.0
+offset_bottom = 576.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(638, 576)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("RectangleShape2D_v")
+
+[node name="ColorRect" type="ColorRect" parent="RightWall"]
+offset_left = -10.0
+offset_top = -576.0
+offset_right = 10.0
+offset_bottom = 576.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ThrustButton" type="Button" parent="UI"]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -184.0
+offset_right = -24.0
+offset_bottom = -24.0
+text = "THRUST"
+script = ExtResource("2")
