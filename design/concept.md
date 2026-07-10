@@ -44,7 +44,9 @@ target locations, similar in feel to *Thrust* (1986) / *Gravity Force* /
 - Mobile-first. Touch input is the primary interaction model.
 - Control scheme: tap-to-set-navigator-target on the playing field, plus a
   fixed thrust button (lower-right corner). A shoot button will be added
-  in the same fixed-corner style once weapons are implemented. See
+  in the same fixed-corner style once weapons are implemented. Desktop and
+  web builds share the same scheme via mouse (click-to-target,
+  click-to-thrust) plus Space bar as a keyboard equivalent for thrust. See
   [control-schemes.md](control-schemes.md) for the full analysis.
 
 ## Tech stack

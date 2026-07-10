@@ -1,0 +1,117 @@
+# Backlog
+
+Milestones are ordered as a walking skeleton: get the smallest playable
+slice first (gravity + thrust + navigator feel), then widen to full
+control scheme, then content, then meta-progression/combat. Items within a
+milestone are roughly execution order, not strict dependencies.
+
+## M0 — Project scaffolding
+
+- [ ] Initialize Godot project (`project.godot`) inside the repo.
+- [ ] Folder structure: `scenes/`, `scripts/`, `assets/`, `levels/`.
+- [ ] `.gitignore` additions for Godot (`.godot/`, `export_presets.cfg` if
+      it contains machine-specific paths, `*.import`).
+- [ ] Mobile export presets set up for Android (and iOS if a Mac/signing
+      is available) — even if unused until later, confirms the toolchain
+      works end to end early.
+- [ ] Basic empty scene that runs on both desktop (for fast iteration) and
+      an Android emulator/device (to catch mobile-only issues early).
+
+## M1 — Core flight physics prototype
+
+- [ ] Vehicle node with a rigid body (or custom integrator) affected by
+      constant gravity.
+- [ ] Thrust force applied along the vehicle's current facing direction,
+      magnitude controlled by a temporary hardcoded/dev input (e.g.
+      keyboard key) — just to validate gravity/thrust/mass feel before any
+      UI exists.
+- [ ] Tune gravity strength, thrust magnitude, and vehicle mass/drag to a
+      first "feels right" pass.
+- [ ] Simple camera that follows the vehicle.
+
+## M2 — Navigator & real input
+
+- [ ] Tap-on-playing-field input sets a target point (world-space).
+- [ ] Navigator auto-rotates the vehicle toward the target at a
+      rate-limited turn speed (not instant).
+- [ ] Fixed thrust button UI, lower-right corner, tap = burst / hold =
+      sustained burn (per [control-schemes.md](control-schemes.md)).
+- [ ] Touch input tested on an actual mobile device or emulator, not just
+      desktop mouse emulation — touch behaves differently enough
+      (multitouch, button hit-testing, screen size) that desktop-only
+      testing risks missing real issues.
+- [ ] Tune base navigator turn rate against thrust burst timing so the
+      "burn early for a curve, wait for alignment for a straight line"
+      skill (from control-schemes.md) actually reads as a skill in
+      practice.
+
+## M3 — Collision & failure state
+
+- [ ] Terrain/wall collision shapes.
+- [ ] Crash detection (e.g. velocity/impact-angle threshold) distinct from
+      a soft landing/touch.
+- [ ] Restart/reset flow on crash (instant retry, no menu round-trip —
+      keep iteration fast for both dev and player).
+- [ ] Level boundaries (what happens if the vehicle flies off-screen/off-
+      level).
+
+## M4 — First maze level & win condition
+
+- [ ] Hand-built single maze level using placeholder geometry.
+- [ ] Checkpoint/exit trigger and win state.
+- [ ] Camera framing tuned for maze corridors (zoom/lookahead as needed).
+- [ ] First real playtest of the full loop: tap target → burn → navigate
+      corridor → reach exit, without any placeholder dev-input shortcuts
+      left in from M1.
+
+## M5 — Delivery mode
+
+- [ ] Cargo pickup mechanic (tractor beam/hook, per concept.md).
+- [ ] Cargo affects flight (added mass/drag while carrying).
+- [ ] Delivery target/drop-off trigger and success/fail conditions (e.g.
+      dropped cargo, cargo destroyed on hard impact).
+
+## M6 — Navigator upgrades / meta-progression
+
+- [ ] Persistent save data (upgrade levels, unlocked tiers).
+- [ ] "Faster navigator" upgrade tier(s) — higher turn rate.
+- [ ] "Smarter navigator" upgrade tier(s) — velocity-aware anti-overshoot
+      facing, then (later) obstacle-aware waypoint routing.
+- [ ] Basic upgrade/progression screen UI.
+
+## M7 — Weapons & shoot button
+
+- [ ] Shoot button UI, fixed corner (opposite thrust, per
+      control-schemes.md), placement/behavior (tap-fire vs hold-fire)
+      decided and implemented.
+- [ ] Projectile/weapon system.
+- [ ] Turrets or simple enemy placements as the first combat encounter.
+- [ ] Navigator behavior when a target is an enemy vs. a navigation point
+      (aim-assist framing from control-schemes.md).
+
+## M8 — Content & polish
+
+- [ ] Additional maze/delivery levels.
+- [ ] Real vehicle/environment art (replacing placeholder geometry).
+- [ ] Audio: thrust sound, collision/crash, UI feedback, music.
+- [ ] Menus: main menu, level select, pause, settings.
+- [ ] Tutorial/onboarding for the point-to-navigate scheme (it's not a
+      standard control scheme players will already know).
+
+## M9 — Mobile release prep
+
+- [ ] Performance pass on real low/mid-tier Android devices, not just a
+      dev machine or emulator.
+- [ ] App icon, store screenshots/listing assets.
+- [ ] Signed release builds for both platforms targeted.
+- [ ] Crash/analytics reporting hook, if wanted, before wide release.
+
+## Not yet scheduled / needs a decision first
+
+- Vehicle types (rocket vs. helicopter handling differences) — depends on
+  M1 physics tuning results.
+- Portrait vs. landscape orientation — noted as open in
+  [control-schemes.md](control-schemes.md); affects M2 UI layout, should
+  be settled before M2 starts.
+- Physics fidelity (arcade vs. simulation-accurate) — decide during M1
+  tuning, not before.

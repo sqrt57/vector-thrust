@@ -178,13 +178,39 @@ Variants 1–5 are superseded as the primary scheme; variant 1 (buttons)
 remains worth keeping in mind only if a manual-override/accessibility mode
 is ever wanted later.
 
+## Desktop & web controls
+
+Mobile-first, but Godot exports to desktop and web (HTML5) essentially for
+free, so it's worth locking the mouse/keyboard mapping now rather than
+leaving it implicit. Desktop and web share one scheme (no reason to treat
+them separately — both are mouse + keyboard):
+
+- **Navigation target**: left-click anywhere on the playing field sets the
+  navigator's target, same as mobile tap. Same zone rule applies — clicks
+  inside the thrust (or later shoot) button's UI bounds are consumed by
+  the button, not the playfield.
+- **Thrust**: the same on-screen corner button is present and
+  mouse-clickable (click/hold with the mouse works exactly like a touch
+  hold), **plus** Space bar as a keyboard equivalent — press for a burst,
+  hold for sustained burn. Both drive the same underlying "thrust active"
+  input action, so they're interchangeable, not two separate behaviors to
+  maintain.
+- Mouse and keyboard are independent input channels, so — unlike mobile,
+  which needed multitouch to click-target and hold-thrust
+  simultaneously — desktop gets that concurrency for free: click to
+  retarget while Space is held down works without any special handling.
+- **Shoot** (later): expect the same pattern — on-screen button stays
+  mouse-clickable, plus a keyboard equivalent (exact key TBD, e.g. Ctrl or
+  a mouse right-click) chosen once the weapon system is designed.
+
 ## Open questions
 
 - Exact navigator turn-rate (base, pre-upgrade) and how thrust timing
   relative to rotation progress affects trajectory — needs in-engine
   tuning.
 - Shoot button's exact placement and whether it's a tap-fire or hold-fire
-  action once weapons are designed.
+  action once weapons are designed, and its desktop keyboard/mouse
+  equivalent.
 - Portrait vs. landscape orientation, and where exactly the lower-right/
   lower-left buttons sit relative to screen edges/safe areas across device
   sizes.
