@@ -117,7 +117,7 @@ than necessary.
    from "manual rotation + throttle" to "target placement + burn timing",
    with rotation performance itself becoming an upgradeable stat.
    - **Input disambiguation**: split by screen zone rather than gesture
-     timing — a fixed thrust control (button or thumb-corner hold zone)
+     timing — a fixed thrust control (button in the bottom control strip)
      stays separate from the play-area tap-to-target zone, using
      multitouch so both can be active at once (one thumb resting on
      thrust, the other tapping targets). This avoids the latency a
@@ -154,20 +154,40 @@ than necessary.
 **Variant 6 (point-to-navigate + thrust-only) is the chosen scheme**,
 concretely laid out as:
 
-- **Thrust**: fixed button, lower-right corner of the screen. Tap for a
-  burst, hold for sustained burn.
+- **Thrust**: fixed button, right side of the bottom control strip (see
+  Screen layout below). Tap for a burst, hold for sustained burn.
 - **Navigation target**: tapping anywhere on the playing field sets the
   navigator's target point; the vehicle auto-rotates toward it over time
   (rate-limited, not instant — see variant 6 above for why this preserves
   a timing-skill challenge).
 - **Shoot** (later, once weapons are added): a second fixed button. Exact
-  position TBD, but follows the same fixed-corner pattern as thrust so it
-  doesn't compete with the tap-to-target play area — likely lower-left, to
-  keep the two buttons thumb-reachable on opposite corners.
+  position TBD, but follows the same control-strip pattern as thrust so
+  it doesn't compete with the tap-to-target play area — likely the left
+  side of the strip, to keep the two buttons thumb-reachable on opposite
+  sides.
 
 This resolves the tap-vs-tap ambiguity by screen zone (per the analysis
 above): the play area is exclusively for setting targets, and all direct
-action buttons live in fixed corners.
+action buttons live in the bottom control strip (see Screen layout
+below).
+
+**Orientation: portrait.** Matches the M1 prototype's existing portrait
+layout and borders.
+
+## Screen layout
+
+The screen splits into two fixed vertical regions rather than floating
+buttons on top of the play field:
+
+- **Play field** — most of the screen (top region). Tap-to-target input
+  only applies here.
+- **Control strip** — a fixed-height band across the bottom of the
+  screen, reserved for buttons. Keeps buttons off the play area entirely
+  instead of overlaying a screen corner.
+
+Current buttons in the control strip: **thrust**, on the right side.
+(Shoot, once weapons are added, is expected on the left side of the same
+strip — see below.)
 
 This also settles the core-skill pivot flagged earlier: rotation is
 delegated to the navigator by design, so `concept.md`'s "no auto-leveling
@@ -189,7 +209,7 @@ them separately — both are mouse + keyboard):
   navigator's target, same as mobile tap. Same zone rule applies — clicks
   inside the thrust (or later shoot) button's UI bounds are consumed by
   the button, not the playfield.
-- **Thrust**: the same on-screen corner button is present and
+- **Thrust**: the same on-screen control-strip button is present and
   mouse-clickable (click/hold with the mouse works exactly like a touch
   hold), **plus** Space bar as a keyboard equivalent — press for a burst,
   hold for sustained burn. Both drive the same underlying "thrust active"
@@ -211,9 +231,8 @@ them separately — both are mouse + keyboard):
 - Shoot button's exact placement and whether it's a tap-fire or hold-fire
   action once weapons are designed, and its desktop keyboard/mouse
   equivalent.
-- Portrait vs. landscape orientation, and where exactly the lower-right/
-  lower-left buttons sit relative to screen edges/safe areas across device
-  sizes.
+- Exact height of the control strip, and how the buttons within it sit
+  relative to screen edges/safe areas across device sizes.
 - Navigator turn-rate/smartness curve across upgrade tiers, and how
   "smart" (predictive/obstacle-aware) the top tier gets before it starts
   trivializing maze mode.

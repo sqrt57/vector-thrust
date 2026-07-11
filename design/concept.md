@@ -20,8 +20,8 @@ target locations, similar in feel to *Thrust* (1986) / *Gravity Force* /
   rate/quality is an upgradeable stat (see
   [control-schemes.md](control-schemes.md)).
 - **Throttle control**: player applies thrust along the vehicle's current
-  facing direction via a fixed thrust button (lower-right corner); tap for
-  a burst, hold for a sustained burn.
+  facing direction via a fixed thrust button (right side of the bottom
+  control strip); tap for a burst, hold for a sustained burn.
 - **Momentum-based flight**: the vehicle still has real inertia and a
   rate-limited turn — the skill is timing thrust bursts against how far
   the navigator has rotated (burn early for a curved shot, wait for full
@@ -43,10 +43,11 @@ target locations, similar in feel to *Thrust* (1986) / *Gravity Force* /
 
 - Mobile-first. Touch input is the primary interaction model.
 - Control scheme: tap-to-set-navigator-target on the playing field, plus a
-  fixed thrust button (lower-right corner). A shoot button will be added
-  in the same fixed-corner style once weapons are implemented. Desktop and
-  web builds share the same scheme via mouse (click-to-target,
-  click-to-thrust) plus Space bar as a keyboard equivalent for thrust. See
+  fixed thrust button (right side of the bottom control strip). A shoot
+  button will be added on the left side of the same strip once weapons
+  are implemented. Desktop and web builds share the same scheme via mouse
+  (click-to-target, click-to-thrust) plus Space bar as a keyboard
+  equivalent for thrust. See
   [control-schemes.md](control-schemes.md) for the full analysis.
 
 ## Tech stack

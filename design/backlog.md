@@ -38,10 +38,10 @@ milestone are roughly execution order, not strict dependencies.
       UI exists. Verified on a real Android device via a temporary
       on-screen thrust button (pulled forward from M2) since the
       keyboard-only dev input isn't usable on touch.
-- [ ] Tune gravity strength, thrust magnitude, and vehicle mass/drag to a
-      first "feels right" pass. (Only a functional fix so thrust can
-      overcome gravity at all — thrust_acceleration=1400 vs gravity=800 —
-      not yet a deliberate feel pass.)
+- [x] Tune gravity strength, thrust magnitude, and vehicle mass/drag to a
+      first "feels right" pass. Current values (`gravity=800`,
+      `thrust_acceleration=1400`) confirmed to feel right on a real
+      device — no further tuning needed for M1.
 - [x] Simple fixed camera framing the full playfield (static environment
       — no scroll/follow behavior yet; see
       [environments.md](environments.md)).
@@ -51,8 +51,9 @@ milestone are roughly execution order, not strict dependencies.
 - [ ] Tap-on-playing-field input sets a target point (world-space).
 - [ ] Navigator auto-rotates the vehicle toward the target at a
       rate-limited turn speed (not instant).
-- [ ] Fixed thrust button UI, lower-right corner, tap = burst / hold =
-      sustained burn (per [control-schemes.md](control-schemes.md)).
+- [ ] Fixed thrust button UI, right side of the bottom control strip,
+      tap = burst / hold = sustained burn (per
+      [control-schemes.md](control-schemes.md)).
 - [ ] Touch input tested on an actual mobile device or emulator, not just
       desktop mouse emulation — touch behaves differently enough
       (multitouch, button hit-testing, screen size) that desktop-only
@@ -100,8 +101,8 @@ milestone are roughly execution order, not strict dependencies.
 
 ## M7 — Weapons & shoot button
 
-- [ ] Shoot button UI, fixed corner (opposite thrust, per
-      control-schemes.md), placement/behavior (tap-fire vs hold-fire)
+- [ ] Shoot button UI, left side of the control strip (opposite thrust,
+      per control-schemes.md), placement/behavior (tap-fire vs hold-fire)
       decided and implemented.
 - [ ] Projectile/weapon system.
 - [ ] Turrets or simple enemy placements as the first combat encounter.
@@ -129,9 +130,6 @@ milestone are roughly execution order, not strict dependencies.
 
 - Vehicle types (rocket vs. helicopter handling differences) — depends on
   M1 physics tuning results.
-- Portrait vs. landscape orientation — noted as open in
-  [control-schemes.md](control-schemes.md); affects M2 UI layout, should
-  be settled before M2 starts.
 - Physics fidelity (arcade vs. simulation-accurate) — decide during M1
   tuning, not before.
 - Scrolling environment support (camera follow, lookahead/deadzone
