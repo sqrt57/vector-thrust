@@ -18,7 +18,7 @@ but it's deferred until the static case is working end to end.
 Why: static levels are simpler to build and tune first — no
 camera-follow logic, no off-screen vehicle/level state, no need to decide
 lookahead/deadzone behavior — so the core gravity/thrust/navigator loop
-can be validated (M1–M4) before scrolling adds its own complexity on top.
+can be validated (M1–M5) before scrolling adds its own complexity on top.
 
 ## Implications for the backlog
 
@@ -28,7 +28,7 @@ can be validated (M1–M4) before scrolling adds its own complexity on top.
   an engine-wide assumption — so a given level declares whether it fits
   on one screen (static) or is larger (scrolling), and scrolling support
   can be added later without reworking static levels.
-- **M4's first maze level** should be built to fit on one screen (static).
+- **M5's first maze level** should be built to fit on one screen (static).
 - Scrolling camera support (follow, lookahead, deadzone tuning) is
   deferred to a later milestone, once static levels are validated.
 

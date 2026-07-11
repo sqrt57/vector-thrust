@@ -69,7 +69,31 @@ milestone are roughly execution order, not strict dependencies.
       practice. Current `navigator_turn_rate=3.0` rad/s confirmed to
       feel right on a real device — no further tuning needed.
 
-## M3 — Collision & failure state
+## M3 — Smarter navigator
+
+- [x] Visual indicator for the current navigator target (marker/crosshair
+      at `navigator_target`) so the aim point is visible during play and
+      testing. Amber crosshair (`navigator_target_marker.gd`), repositioned
+      by `main.gd` on tap and initialized from the vehicle's default target
+      on `_ready`. Verified in a real windowed run: marker starts at the
+      vehicle's default up-ahead target and jumps to the tapped point,
+      with the vehicle rotating to face it.
+- [ ] Navigator stops pointing the vehicle directly at the target;
+      desired facing is derived from a target thrust vector instead of
+      raw bearing-to-target.
+- [ ] Rotation is limited so the vertical component of thrust is always
+      enough to fly up (never over-rotate into a heading that can't hold
+      or gain altitude).
+- [ ] Horizontal component of thrust follows an accelerate-then-decelerate
+      profile toward the target — burn horizontally toward the target
+      while far away, then flip to braking as it approaches — based on
+      horizontal distance to target, current horizontal speed, current
+      vertical speed, and current orientation.
+- [ ] Playtest the new navigator behavior on a real device against M2's
+      rate-limited turn feel to confirm it still reads well and doesn't
+      regress the "burn early for a curve" skill.
+
+## M4 — Collision & failure state
 
 - [ ] Terrain/wall collision shapes.
 - [ ] Crash detection (e.g. velocity/impact-angle threshold) distinct from
@@ -79,7 +103,7 @@ milestone are roughly execution order, not strict dependencies.
 - [ ] Level boundaries (what happens if the vehicle flies off-screen/off-
       level).
 
-## M4 — First maze level & win condition
+## M5 — First maze level & win condition
 
 - [ ] Hand-built single maze level using placeholder geometry.
 - [ ] Checkpoint/exit trigger and win state.
@@ -90,22 +114,22 @@ milestone are roughly execution order, not strict dependencies.
       corridor → reach exit, without any placeholder dev-input shortcuts
       left in from M1.
 
-## M5 — Delivery mode
+## M6 — Delivery mode
 
 - [ ] Cargo pickup mechanic (tractor beam/hook, per concept.md).
 - [ ] Cargo affects flight (added mass/drag while carrying).
 - [ ] Delivery target/drop-off trigger and success/fail conditions (e.g.
       dropped cargo, cargo destroyed on hard impact).
 
-## M6 — Navigator upgrades / meta-progression
+## M7 — Navigator upgrades / meta-progression
 
 - [ ] Persistent save data (upgrade levels, unlocked tiers).
 - [ ] "Faster navigator" upgrade tier(s) — higher turn rate.
-- [ ] "Smarter navigator" upgrade tier(s) — velocity-aware anti-overshoot
-      facing, then (later) obstacle-aware waypoint routing.
+- [ ] "Smarter navigator" upgrade tier(s) — builds on M3's velocity-aware
+      facing with obstacle-aware waypoint routing.
 - [ ] Basic upgrade/progression screen UI.
 
-## M7 — Weapons & shoot button
+## M8 — Weapons & shoot button
 
 - [ ] Shoot button UI, left side of the control strip (opposite thrust,
       per control-schemes.md), placement/behavior (tap-fire vs hold-fire)
@@ -115,7 +139,7 @@ milestone are roughly execution order, not strict dependencies.
 - [ ] Navigator behavior when a target is an enemy vs. a navigation point
       (aim-assist framing from control-schemes.md).
 
-## M8 — Content & polish
+## M9 — Content & polish
 
 - [ ] Additional maze/delivery levels.
 - [ ] Real vehicle/environment art (replacing placeholder geometry).
@@ -124,7 +148,7 @@ milestone are roughly execution order, not strict dependencies.
 - [ ] Tutorial/onboarding for the point-to-navigate scheme (it's not a
       standard control scheme players will already know).
 
-## M9 — Mobile release prep
+## M10 — Mobile release prep
 
 - [ ] Performance pass on real low/mid-tier Android devices, not just a
       dev machine or emulator.
@@ -140,4 +164,4 @@ milestone are roughly execution order, not strict dependencies.
   tuning, not before.
 - Scrolling environment support (camera follow, lookahead/deadzone
   tuning, off-screen level state) — deferred until static environments
-  are validated through M1–M4; see [environments.md](environments.md).
+  are validated through M1–M5; see [environments.md](environments.md).
