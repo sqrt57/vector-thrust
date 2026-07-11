@@ -48,10 +48,14 @@ milestone are roughly execution order, not strict dependencies.
 
 ## M2 — Navigator & real input
 
-- [ ] Tap-on-playing-field input sets a target point (world-space).
-- [ ] Navigator auto-rotates the vehicle toward the target at a
-      rate-limited turn speed (not instant).
-- [ ] Fixed thrust button UI, right side of the bottom control strip,
+- [x] Tap-on-playing-field input sets a target point (world-space).
+      Mouse-click on desktop and touch both handled in `main.gd`,
+      restricted to the play-field region above the control strip.
+- [x] Navigator auto-rotates the vehicle toward the target at a
+      rate-limited turn speed (not instant). `navigator_turn_rate`
+      (rad/s) in `vehicle.gd`, not yet tuned — see the open tuning item
+      below.
+- [x] Fixed thrust button UI, right side of the bottom control strip,
       tap = burst / hold = sustained burn (per
       [control-schemes.md](control-schemes.md)).
 - [ ] Touch input tested on an actual mobile device or emulator, not just
