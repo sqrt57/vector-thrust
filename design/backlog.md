@@ -58,10 +58,12 @@ milestone are roughly execution order, not strict dependencies.
 - [x] Fixed thrust button UI, right side of the bottom control strip,
       tap = burst / hold = sustained burn (per
       [control-schemes.md](control-schemes.md)).
-- [ ] Touch input tested on an actual mobile device or emulator, not just
+- [x] Touch input tested on an actual mobile device or emulator, not just
       desktop mouse emulation — touch behaves differently enough
       (multitouch, button hit-testing, screen size) that desktop-only
-      testing risks missing real issues.
+      testing risks missing real issues. Verified on a real Android
+      device: tap-to-target rotation and thrust-button hold both confirmed
+      working via touch, no crashes in logcat.
 - [ ] Tune base navigator turn rate against thrust burst timing so the
       "burn early for a curve, wait for alignment for a straight line"
       skill (from control-schemes.md) actually reads as a skill in
