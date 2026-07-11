@@ -53,8 +53,7 @@ milestone are roughly execution order, not strict dependencies.
       restricted to the play-field region above the control strip.
 - [x] Navigator auto-rotates the vehicle toward the target at a
       rate-limited turn speed (not instant). `navigator_turn_rate`
-      (rad/s) in `vehicle.gd`, not yet tuned — see the open tuning item
-      below.
+      (rad/s) in `vehicle.gd`.
 - [x] Fixed thrust button UI, right side of the bottom control strip,
       tap = burst / hold = sustained burn (per
       [control-schemes.md](control-schemes.md)).
@@ -64,10 +63,11 @@ milestone are roughly execution order, not strict dependencies.
       testing risks missing real issues. Verified on a real Android
       device: tap-to-target rotation and thrust-button hold both confirmed
       working via touch, no crashes in logcat.
-- [ ] Tune base navigator turn rate against thrust burst timing so the
+- [x] Tune base navigator turn rate against thrust burst timing so the
       "burn early for a curve, wait for alignment for a straight line"
       skill (from control-schemes.md) actually reads as a skill in
-      practice.
+      practice. Current `navigator_turn_rate=3.0` rad/s confirmed to
+      feel right on a real device — no further tuning needed.
 
 ## M3 — Collision & failure state
 
