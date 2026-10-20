@@ -24,13 +24,12 @@ Decided (and recorded as ADRs/design docs): the final Android platform (TypeScri
 - [Godot agent-feedback story](issues/02-godot-agent-feedback.md): headless logic tests are fine (GUT/gdUnit4), but visuals and input need a windowed GPU process, type checks need a running editor, MCP tooling is community-only; weaker than the web loop except native Android
 - [Web renderer / game library choice](issues/03-web-renderer-library.md): PixiJS v8 as a renderer only, under our own loop (WebGL, Canvas2D fallback); raw Canvas2D as the runner-up pending device frame times
 - [Real-device spike: web build on Android vs. Godot APK](issues/05-android-device-spike.md): TS is good enough on the phone; all three renderers feel the same as Godot at 60 fps, only Pixi WebGL keeps 60 fps at 3000 shapes; live reload ~0.65 s; JDK 21 and Windows `cap run` gotchas found
+- [Final Android platform decision](issues/06-final-platform-decision.md): TypeScript in Capacitor 8, Godot dropped; the TS project is the real game but can be thrown away; reopen Godot only on unfixable frame drops on the Redmi Note 13 Pro ([ADR 0001](../../docs/adr/0001-typescript-capacitor-android-platform.md))
 
 ## Not yet specified
 
-- **Repo cleanup & docs restructure**: delete the Godot files, merge `design/` into `docs/`, retire or rewrite outdated content (e.g. the Godot tech-stack line in `concept.md`, `godot-gotchas.md`, the "both platforms" release item). Its exact shape depends on the platform decision.
-- **Backlog re-mapping**: how M0–M3 (done in Godot) and the unchecked M3 items get restated for the new stack, e.g. a "port navigator, confirm feel matches" milestone, and whether milestone boundaries change.
 - **Sim module conventions**: the public interface of the simulation module, how input is fed in (tap target, thrust held), how agents assert on trajectories, and the visual/screenshot check conventions. Gets sharper once the renderer and physics are picked.
-- **Daily Android dev loop on the chosen platform**: live-reload onto the device, or how often to do device checks vs. browser-only checks.
+- **Daily Android dev loop on the chosen platform**: live-reload onto the device, or how often to do device checks vs. browser-only checks; whether and when to add a low-tier test phone; folding in the spike's toolchain gotchas (JDK 21, Windows `cap run`, HyperOS install block).
 
 ## Out of scope
 
