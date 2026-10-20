@@ -23,6 +23,7 @@ Decided (and recorded as ADRs/design docs): the final Android platform (TypeScri
 - [Physics & collision approach](issues/04-physics-collision.md): own integrator + swept move-and-slide + deterministic trig; Rapier deterministic build only if cargo needs real rigid bodies
 - [Godot agent-feedback story](issues/02-godot-agent-feedback.md): headless logic tests are fine (GUT/gdUnit4), but visuals and input need a windowed GPU process, type checks need a running editor, MCP tooling is community-only; weaker than the web loop except native Android
 - [Web renderer / game library choice](issues/03-web-renderer-library.md): PixiJS v8 as a renderer only, under our own loop (WebGL, Canvas2D fallback); raw Canvas2D as the runner-up pending device frame times
+- [Real-device spike: web build on Android vs. Godot APK](issues/05-android-device-spike.md): TS is good enough on the phone; all three renderers feel the same as Godot at 60 fps, only Pixi WebGL keeps 60 fps at 3000 shapes; live reload ~0.65 s; JDK 21 and Windows `cap run` gotchas found
 
 ## Not yet specified
 
